@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Decor Bengaluru | Property Advisory & Turnkey Interior Architecture</title>
+    <style>
+        /* LUXURY MINIMALIST DESIGN SYSTEM */
+        :root {
+            --bg-cream: #FAF7F2;      /* Alabaster Cream */
+            --text-charcoal: #2C2520; /* Deep Slate Charcoal */
+            --accent-gold: #C5A880;   /* Muted Champagne Gold */
+            --box-gold-light: #F3EDE2;/* Soft Contrast Box */
+            --font-serif: 'Times New Roman', Times, serif;
+            --font-sans: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 11pt;
+            color: #4A3F35;
+        }
+
+        /* CONTAINER SETUP */
+        .inner-frame {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER / NAVIGATION */
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid #DFD5C6;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo-text {
+            font-family: var(--font-serif);
+            font-size: 18pt;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-charcoal);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #DFD5C6;
+        }
+
+        .hero h1 {
+            font-size: 38pt;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+            color: var(--text-charcoal);
+        }
+
+        .hero .subtitle {
+            font-size: 11pt;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin: 0 auto 30px auto;
+        }
+
+        .hero-statement {
+            font-family: var(--font-serif);
+            font-size: 14pt;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: #3D3126;
+        }
+
+        /* BUTTONS */
+        .btn-premium {
+            display: inline-block;
+            background-color: var(--text-charcoal);
+            color: var(--bg-cream);
+            padding: 15px 35px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 9pt;
+            font-weight: bold;
+            text-decoration: none;
+            border: 1px solid var(--text-charcoal);
+            transition: all 0.3s ease;
+        }
+
+        .btn-premium:hover {
+            background-color: transparent;
+            color: var(--text-charcoal);
+        }
+
+        /* CORE EXPERIENCE / SECTIONS */
+        .section-padding {
+            padding: 80px 0;
+            border-bottom: 1px solid #DFD5C6;
+        }
+
+        .section-title {
+            font-size: 22pt;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 50px auto;
+            font-size: 11.5pt;
+        }
+
+        /* TWO-COLUMN LAYOUT */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .portfolio-card {
+            background-color: transparent;
+            padding: 20px;
+            border-left: 1px solid #DFD5C6;
+        }
+
+        .portfolio-card h3 {
+            font-size: 14pt;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-card ul {
+            list-style: none;
+        }
+
+        .portfolio-card li {
+            font-size: 10.5pt;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .portfolio-card li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        /* BEFORE/AFTER SLIDER COMPONENT */
+        .slider-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+            position: relative;
+            border: 1px solid #DFD5C6;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+        }
+
+        .slider-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .img-before {
+            z-index: 1;
+        }
+
+        .img-after {
+            z-index: 2;
+            width: 50%; /* Adjusted by JS */
+            border-right: 2px solid var(--accent-gold);
+        }
+
+        .slider-input {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 3;
+            outline: none;
+            margin: 0;
+            cursor: ew-resize;
+        }
+
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--text-charcoal);
+            border: 2px solid var(--accent-gold);
+            cursor: ew-resize;
+        }
+
+        .badge-label {
+            position: absolute;
+            bottom: 20px;
+            background: rgba(44, 37, 32, 0.85);
+            color: var(--bg-cream);
+            padding: 5px 12px;
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 4;
+        }
+
+        .label-before { left: 20px; }
+        .label-after { right: 20px; }
+
+        /* FOOTER */
+        footer {
+            background-color: #F3EDE2;
+            padding: 60px 0;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-block h4 {
+            font-family: var(--font-sans);
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-charcoal);
+            margin-bottom: 15px;
+        }
+
+        .footer-block p {
+            font-size: 9.5pt;
+            color: #6E5F54;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .split-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 28pt; }
+            .footer-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="inner-frame nav-container">
+            <div class="brand-logo-text">Luxe Decor</div>
+            <div>
+                <a href="https://wa.me/#" class="btn-premium" style="padding: 10px 20px; font-size: 8pt;">Inquire</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="inner-frame">
+            <h1>Luxe Decor</h1>
+            <div class="subtitle">Property Advisory & Turnkey Interior Architecture</div>
+            <div class="gold-line"></div>
+            <div class="hero-statement">
+                "We do not simply discover premium assets. We engineer spaces into immediate move-in architectural masterpieces."
+            </div>
+            <a href="https://wa.me/#" class="btn-premium">Book Private Consultation</a>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="inner-frame">
+            <h2 class="section-title">The Unified Property Journey</h2>
+            <div class="section-intro">
+                In Bengaluru's prime markets, acquiring a property and executing its interior design have always been broken, high-stress pathways. Luxe Decor integrates these fragments into a single elite pipeline. We evaluate, secure, and style your real estate seamlessly.
+            </div>
+
+            <div class="split-grid">
+                <div class="portfolio-card">
+                    <h3>01. Real Estate Acquisition</h3>
+                    <p style="font-size: 10pt;">
+                        Sourcing strictly premier residential floors, off-market spaces, and strategic corporate parcels across Bengaluru. Fully backed by strict Karnataka RERA verification and full legal A-Khata validation framework.
+                    </p>
+                </div>
+                <div class="portfolio-card">
+                    <h3>02. Turnkey Architecture</h3>
+                    <p style="font-size: 10pt;">
+                        Complete design execution from structural 2D drafting and high-end 3D visual concepts to bespoke modular cabinetry installations and hand-finished spatial transformations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="inner-frame">
+            <h2 class="section-title">Spatial Transformation Visualized</h2>
+            <div class="section-intro">
+                Drag the interactive slider below to see the exact spatial planning and aesthetic upgrade executed for our flagship Bengaluru living room transformation project.
+            </div>
+
+            <div class="slider-wrapper">
+                <span class="badge-label label-before">Original Space</span>
+                <span class="badge-label label-after">Luxe Decor Design</span>
+                
+                <img class="slider-img img-before" src="https://i.ibb.co/VWVgG3Yn/original.png" alt="Before Interior">
+                
+                <div class="img-after" id="after-box">
+                    <img class="slider-img" src="https://i.ibb.co/v4tNMLmQ/transformed.png" alt="After Luxe Interior" style="width: 750px; max-width: none;">
+                </div>
+                
+                <input type="range" min="0" max="100" value="50" class="slider-input" id="view-slider">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="inner-frame split-grid">
+            <div class="portfolio-card" style="border-left: 2px solid var(--accent-gold);">
+                <h3 style="color: var(--text-charcoal);">For Buyers & Asset Investors</h3>
+                <ul>
+                    <li><strong>Strategic Oversight:</strong> We assess the interior boundaries and structural limits of a layout live during site visits before you buy.</li>
+                    <li><strong>Legal Guarantee:</strong> Complete sub-registrar processing and multi-tier document clearings.</li>
+                    <li><strong>Vastu Mapping:</strong> Fluid optimization of ancient geometry blended into ultra-modern, minimalist aesthetic footprints.</li>
+                </ul>
+            </div>
+            <div class="portfolio-card" style="border-left: 2px solid var(--accent-gold);">
+                <h3 style="color: var(--text-charcoal);">For Property Owners & Landlords</h3>
+                <ul>
+                    <li><strong>Staging Dominance:</strong> Premium architectural staging and professional photography to lock in elite buyers.</li>
+                    <li><strong>Yield Engineering:</strong> Targeted premium kitchen and lighting facelifts proven to boost asset lease yields by 15% - 20%.</li>
+                    <li><strong>Governance Handover:</strong> Secure background evaluation of tenants and end-to-end documentation coordination.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="inner-frame footer-grid">
+            <div class="footer-block">
+                <h4>Luxe Decor Bengaluru</h4>
+                <p>Bespoke Property Sourcing &<br>Turnkey Architectural Styling<br>Bengaluru, KA, India</p>
+            </div>
+            <div class="footer-block">
+                <h4>Professional Compliance</h4>
+                <p>Fully Registered Consultants under the<br>Karnataka Real Estate Regulatory Authority (RERA).<br>Portfolio Consultations by Private Appointment Only.</p>
+            </div>
+            <div class="footer-block">
+                <h4>Digital Core</h4>
+                <p>Instagram: @luxedecorbengaluru<br>Web: luxedecorblr.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const slider = document.getElementById('view-slider');
+        const afterBox = document.getElementById('after-box');
+
+        slider.addEventListener('input', (e) => {
+            const sliderValue = e.target.value;
+            afterBox.style.width = `${sliderValue}%`;
+        });
+    </script>
+</body>
+</html>
